@@ -1,13 +1,22 @@
-export let cart=[
-  {
+import { updateCartQuantity } from "../scripts/amazon";
+
+export let cart = JSON.parse(localStorage.getItem('cart'));
+
+if(!cart)
+{
+  cart=[{
   productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
   quantity:299
   },
   {
     productId: "54e0eccd-8f36-462b-b68a-8182611d9add",
     quantity: 90
-  }
-];
+  }];
+}
+
+export function saveToStorage(){
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 export function addToCart(productId){
   let matchingItem;
@@ -24,7 +33,8 @@ export function addToCart(productId){
     else{
       cart.push({productId : productId,quantity:1});
     }
-    console.log(cart)
+    //updateCartQuantity();
+    saveToStorage();
 }
 
 export function removeFromCart(productId)
@@ -37,4 +47,6 @@ export function removeFromCart(productId)
     }
   });
   cart=newCart;
+  //updateCartQuantity();
+  saveToStorage();
 }
