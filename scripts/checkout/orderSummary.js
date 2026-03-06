@@ -2,6 +2,7 @@ import {cart,removeFromCart,updateCartQuantity,updateDeliveryOption} from '../..
 import{products} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 import { deliveryOptions } from '../../data/deliveryOptions.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary(){
 let cartSummaryHTML='';
@@ -105,6 +106,7 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
     const{productId, deliveryOptionId}=element.dataset;
     updateDeliveryOption(productId,deliveryOptionId);
     renderOrderSummary();
+    renderPaymentSummary();
   })
 })
 }

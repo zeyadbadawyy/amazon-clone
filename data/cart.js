@@ -1,5 +1,3 @@
-//import { updateCartQuantity } from "../scripts/amazon";
-
 export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 /*if(cart.length===0)
 {
@@ -17,7 +15,7 @@ export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 export let cartQuantity = 0;
 
-updateCartQuantity(); // run when the script loads
+updateCartQuantity(); 
 
 export function saveToStorage(){
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -62,7 +60,6 @@ export function updateCartQuantity(){
   cart.forEach((cartItem)=>{
     cartQuantity += cartItem.quantity;
   });
-  console.log(cartQuantity)
 }
 
 export function updateDeliveryOption(productId, deliveryOptionId){
