@@ -1,4 +1,4 @@
-import { updateCartQuantity } from "../scripts/amazon";
+//import { updateCartQuantity } from "../scripts/amazon";
 
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
