@@ -1,8 +1,7 @@
 //import { updateCartQuantity } from "../scripts/amazon";
 
-
-export let cart = JSON.parse(localStorage.getItem('cart'));
-if(cart.length===0)
+export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+/*if(cart.length===0)
 {
   cart=[{
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -14,7 +13,11 @@ if(cart.length===0)
     quantity: 90,
     deliveryOptionId:'2'
   }];
-}
+}*/
+
+export let cartQuantity = 0;
+
+updateCartQuantity(); // run when the script loads
 
 export function saveToStorage(){
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -35,8 +38,8 @@ export function addToCart(productId){
     else{
       cart.push({productId : productId,quantity:1, deliveryOptionId:'1'});
     }
-    //updateCartQuantity();
     saveToStorage();
+    updateCartQuantity();
 }
 
 export function removeFromCart(productId)
@@ -49,8 +52,17 @@ export function removeFromCart(productId)
     }
   });
   cart=newCart;
-  //updateCartQuantity();
   saveToStorage();
+  updateCartQuantity();
+}
+
+export function updateCartQuantity(){
+  cartQuantity = 0;
+
+  cart.forEach((cartItem)=>{
+    cartQuantity += cartItem.quantity;
+  });
+  console.log(cartQuantity)
 }
 
 export function updateDeliveryOption(productId, deliveryOptionId){
