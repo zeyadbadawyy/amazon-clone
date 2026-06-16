@@ -147,7 +147,7 @@ https://zeyadbadawyy.github.io/amazon-clone/
 
 **Zeyad Badawy**
 
-Frontend Developer • Software Engineering Student • AI Enthusiast
+Full-Stack Developer | Software Engineer
 
 ---
 
